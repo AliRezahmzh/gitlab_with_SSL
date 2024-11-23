@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    hostname: git.bahamtech.com
+    restart: always
+    networks:
+      - gitlab-net
+    ports:
+      - "8080:80"    # HTTP
+      - "443:443"    # HTTPS
+      - "2222:22"    # SSH
+    volumes:
+      - /home/gitlab/config:/etc/gitlab
+      - /home/gitlab/logs:/var/log/gitlab
+      - /home/gitlab/data:/var/opt/gitlab
+      - /home/gitlab/ssl:/etc/gitlab/ssl
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://git.bahamtech.com'
+        nginx['redirect_http_to_https'] = true
+        nginx['ssl_certificate'] = "/etc/gitlab/ssl/git.bahamtech.com.crt"
+        nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/git.bahamtech.com.key"
+
+networks:
+  gitlab-net:
+    driver: bridge
