@@ -1,3 +1,17 @@
+certbot certonly --manual --preferred-challenges dns -d git.bahamtech.com
+
+Please deploy a DNS TXT record under the name:
+_acme-challenge.git.bahamtech.com
+
+with the following value:
+xg7kYsT8-a_sample_token_example_aB12c34dEf
+
+
+وقتی مطمئن شدید رکورد TXT منتشر شده است، به ترمینال Certbot برگردید و Enter بزنید. اگر همه چیز درست باشد، Certbot گواهی‌نامه شما را صادر می‌کند.
+
+
+
+
 sudo mkdir -p /home/gitlab/ssl
 sudo cp /etc/letsencrypt/live/git.bahamtech.com/fullchain.pem /home/gitlab/ssl/git.bahamtech.com.crt
 sudo cp /etc/letsencrypt/live/git.bahamtech.com/privkey.pem /home/gitlab/ssl/git.bahamtech.com.key
