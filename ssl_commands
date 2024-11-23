@@ -1,0 +1,8 @@
+sudo mkdir -p /home/gitlab/ssl
+sudo cp /etc/letsencrypt/live/git.bahamtech.com/fullchain.pem /home/gitlab/ssl/git.bahamtech.com.crt
+sudo cp /etc/letsencrypt/live/git.bahamtech.com/privkey.pem /home/gitlab/ssl/git.bahamtech.com.key
+sudo chmod 600 /home/gitlab/ssl/*
+
+
+
+
